@@ -1,7 +1,19 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import axios from 'axios';
+import { onMounted, ref } from 'vue';
 
+const page = ref({
+  pageNum: 1,
+  pageSize: 10,
+  page: [],
+  total: 0,
+});
 const modal = ref<any>(null);
+
+onMounted(async () => {
+  const res = await axios.get('/api/student/page');
+  console.log(res);
+});
 </script>
 
 <template>
